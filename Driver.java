@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class Driver {
     
     public static void main(String[] args) {
+        System.out.println("Menú");
+        System.out.print("Escribe la opción que quieras realizar: ");
         Scanner in = new Scanner(System.in);
 
         while (true) {
