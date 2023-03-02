@@ -11,7 +11,7 @@ public class Calculator {
         
     }
 
-    private int calculate(int op1, int op2, String op) {
+    int calculate(int op1, int op2, String op) {
         if(op.equals("+")) {
             res = op1 + op2;
 
@@ -25,7 +25,7 @@ public class Calculator {
             res = op1 / op2;
 
         }
-        
+
         return res;
     }
 }
