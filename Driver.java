@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import  java.lang.Runtime;
 
 public class Driver {
     
@@ -6,9 +7,11 @@ public class Driver {
         System.out.println("Menú");
         System.out.print("Escribe la opción que quieras realizar: ");
         Scanner in = new Scanner(System.in);
+        Runtime run = Runtime.getRuntime();
 
         while (true) {
             
+            run.getRuntime().exec(args);
 
             if (writeLine(in).equals("exit")) {
                 System.exit(0);
