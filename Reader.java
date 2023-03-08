@@ -9,4 +9,10 @@ public class Reader {
         return result;
     }
 
+    public void read(String input) {
+        switch (input) {
+            
+        }
+    }
+
 }
