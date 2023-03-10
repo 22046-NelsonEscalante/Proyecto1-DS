@@ -68,6 +68,15 @@ public class Reader {
                         mem.addMemory(vars);
                     }
                     break;
+                case "defun":
+                    
+                    break;
+                case "format t":
+                       
+                    break;
+                case "Switch":
+                    
+                    break;
             }
 
         }
