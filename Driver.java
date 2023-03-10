@@ -17,11 +17,10 @@ public class Driver {
                 in.close();
                 System.exit(0);
             } else if (response.equals("execute")) {
-                reader.execute(fileContent);
+                reader.execute(fileContent, in);
             } else {
                 try {
                     fileContent = reader.read(response);
-                    reader.execute(fileContent);
                 } catch (Exception e) {
                     System.out.println("Archivo no encontrado.");
                 }

@@ -10,4 +10,8 @@ public class Memory {
     public void addMemory(String[] input) {
         vars.put(input[0], Integer.parseInt(input[1]));
     }
+
+    public int getVal(String variable) {
+        return vars.get(variable);
+    }
 }
