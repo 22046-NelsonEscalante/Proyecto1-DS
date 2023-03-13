@@ -1,40 +1,68 @@
+import java.util.ArrayList;
+
+import javax.swing.Spring;
+
 public class Calculator {
 
     private int op1;
     private int op2;
-    private String op;
+    private String sign;
     private int res;
 
-    // Calling the calculate method.
-    public Calculator() {
+    public int calculate(String op) {
         
-        calculate(op1, op2, op);
-        
-    }
+        String[] operandos = op.split("");
 
-    /**
-     * It takes two integers and a string as input, and returns an integer
-     * 
-     * @param op1 The first operand
-     * @param op2 The second operand
-     * @param op the operator
-     * @return The result of the calculation.
-     */
-    int calculate(int op1, int op2, String op) {
-        if(op.equals("+")) {
-            res = op1 + op2;
+        for (String string : operandos) {
+            if(string.equals("(")) {
+                ArrayList<String> operacion = new ArrayList<>();
 
-        } else if(op.equals("-")) {
-            res = op1 - op2;
+                for (String string2 : operandos) {
 
-        } else if(op.equals("*")) {
-            res = op1 * op2;
+                    if(string2.equals("+")) {
+                        operacion.add(string2);
 
-        } else if(op.equals("/")) {
-            res = op1 / op2;
+                    } else if(string2.equals("-")) {
+                        operacion.add(string2);
 
+                    } else if(string2.equals("*")) {
+                        operacion.add(string2);
+                    
+                    } else if(string2.equals("/")) {
+                        operacion.add(string2);
+
+                    } else if(string2.equals(")")){
+                        op1 = Integer.parseInt(operacion.get(0));
+                        
+                        op2 = Integer.parseInt(operacion.get(1));
+                        
+                        sign = operacion.get(3);
+
+                        operacion.remove(op1);
+                        operacion.remove(op2);
+                        operacion.remove(sign);
+
+                        if(sign.equals("+")) {
+                            res = op1 + op2;
+
+                        } else if(sign.equals("-")) {
+                            res = op1 - op2;
+
+                        } else if(sign.equals("*")) {
+                            res = op1 * op2;
+
+                        } else if(sign.equals("/")) {
+                            res = op1 / op2;
+
+                        }
+
+                    } else {
+                        operacion.add(string2);
+
+                    }
+                }
+            }
         }
-
         return res;
     }
 }
