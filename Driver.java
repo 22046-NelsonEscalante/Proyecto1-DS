@@ -9,6 +9,7 @@ public class Driver {
         ArrayList<String> fileContent = new ArrayList<>();
         String response;
 
+        // A loop that will run forever until the user types "exit"
         while (true) {
 
             response = in.nextLine();

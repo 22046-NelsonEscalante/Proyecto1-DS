@@ -6,6 +6,12 @@ import java.io.FileReader;
 public class Reader {
     Memory mem = new Memory();
 
+    /**
+     * It reads a file and returns an ArrayList of Strings
+     * 
+     * @param path The path to the file you want to read.
+     * @return The file is being returned.
+     */
     public ArrayList<String> read(String path) throws Exception {
         ArrayList<String> file = new ArrayList<>();
 
@@ -25,6 +31,12 @@ public class Reader {
 
     }
 
+    /**
+     * It takes a file and a scanner as parameters, and then it executes the code in the file
+     * 
+     * @param file ArrayList of strings, each string is a line of code
+     * @param in Scanner
+     */
     public void execute(ArrayList<String> file, Scanner in) {
         //System.out.println(file);
 
