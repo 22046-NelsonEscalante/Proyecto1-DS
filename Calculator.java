@@ -1,6 +1,6 @@
 import java.util.ArrayList;
+import java.util.Stack;
 
-import javax.swing.Spring;
 
 public class Calculator {
 
@@ -8,61 +8,69 @@ public class Calculator {
     private int op2;
     private String sign;
     private int res;
+    private Stack<ArrayList<String>> pila = new Stack<>();
 
     public int calculate(String op) {
         
         String[] operandos = op.split("");
+        
+        ArrayList<String> chapuz = new ArrayList<>();
+        pila.push(chapuz);
 
         for (String string : operandos) {
-            if(string.equals("(")) {
-                ArrayList<String> operacion = new ArrayList<>();
+                if(string.equals("(")) {
 
-                for (String string2 : operandos) {
+                    ArrayList<String> operacion = new ArrayList<>();
 
-                    if(string2.equals("+")) {
-                        operacion.add(string2);
 
-                    } else if(string2.equals("-")) {
-                        operacion.add(string2);
+                    pila.push(operacion);
 
-                    } else if(string2.equals("*")) {
-                        operacion.add(string2);
+                } else {
+
+                    if(string.equals("+")) {
+                        pila.peek().add("+");
+        
+                    } else if(string.equals("-")) {
+                        pila.peek().add("-");
+        
+                    } else if(string.equals("*")) {
+                        pila.peek().add("*");
                     
-                    } else if(string2.equals("/")) {
-                        operacion.add(string2);
+                    } else if(string.equals("/")) {
+                        pila.peek().add("/");
+        
+                    } else if(string.equals(")")){
 
-                    } else if(string2.equals(")")){
-                        op1 = Integer.parseInt(operacion.get(0));
-                        
-                        op2 = Integer.parseInt(operacion.get(1));
-                        
-                        sign = operacion.get(3);
+                        ArrayList<String> evaluateArrayList = pila.pop();
 
-                        operacion.remove(op1);
-                        operacion.remove(op2);
-                        operacion.remove(sign);
-
+                        sign = evaluateArrayList.get(0); 
+                        op1 = Integer.parseInt(evaluateArrayList.get(1));
+                        op2 = Integer.parseInt(evaluateArrayList.get(2));
+        
                         if(sign.equals("+")) {
                             res = op1 + op2;
-
+        
                         } else if(sign.equals("-")) {
                             res = op1 - op2;
-
+        
                         } else if(sign.equals("*")) {
                             res = op1 * op2;
-
+        
                         } else if(sign.equals("/")) {
                             res = op1 / op2;
-
+        
                         }
-
+                        
+                        pila.peek().add("" + res);
+                    
                     } else {
-                        operacion.add(string2);
+                        pila.peek().add(string);
 
                     }
-                }
             }
+                
         }
+        System.out.println("El resultado es: " + res);
         return res;
     }
 }
