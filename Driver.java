@@ -18,7 +18,7 @@ public class Driver {
                 in.close();
                 System.exit(0);
             } else if (response.equals("execute")) {
-                reader.execute(fileContent, in);
+                reader.execute(fileContent, in, null);
             } else {
                 try {
                     fileContent = reader.read(response);

@@ -4,14 +4,19 @@ import java.util.HashMap;
 
 public class Memory {
     private HashMap<String, Integer> vars = new HashMap<>();
+    private HashMap<String, Function> functions = new HashMap<>();
     
     /**
      * This function returns a HashMap of the variables in the current scope
      * 
      * @return A HashMap of String, Integer
      */
-    public HashMap<String, Integer> getMap() {
+    public HashMap<String, Integer> getMapVars() {
         return this.vars;
+    }
+
+    public HashMap<String, Function> getMapFunc() {
+        return this.functions;
     }
     
     /**
@@ -22,6 +27,10 @@ public class Memory {
      */
     public void addMemory(String[] input) {
         vars.put(input[0], Integer.parseInt(input[1]));
+    }
+
+    public void addFunction(String name, ArrayList<String> params, ArrayList<String> lines) {
+        functions.put(name, new Function(name, params, lines));
     }
     
     /**
@@ -34,28 +43,8 @@ public class Memory {
         return vars.get(variable);
     }
 
-    private HashMap<String, ArrayList<String>> functionMap = new HashMap<>();
-
-    /**
-     * This function takes an ArrayList of Strings and a String as parameters and adds the ArrayList to
-     * the functionMap HashMap with the String as the key
-     * 
-     * @param valueArrayList An ArrayList of Strings that contains the function's parameters.
-     * @param keyString The name of the function
-     */
-    public void addFunction(ArrayList<String> valueArrayList, String keyString) {
-        functionMap.put(keyString, valueArrayList);
+    public Function getFunc(String name) {
+        return functions.get(name);
     }
 
-    /**
-     * It takes a HashMap as a parameter, and prints out the key and the value of each entry in the
-     * HashMap
-     * 
-     * @param map HashMap<String, ArrayList<String>>
-     */
-    public void showFunctions(HashMap<String, ArrayList<String>> map) {
-        for(String string : map.keySet()) {
-            System.out.println("La función " + string + " tiene los valores " + map.get(string));
-        }
-    }
 }
