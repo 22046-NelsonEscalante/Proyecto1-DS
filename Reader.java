@@ -41,13 +41,15 @@ public class Reader {
         //System.out.println(file);
 
         for (String s: file) {
-            s = s.replaceAll("[()]", "");
+            String noParentheses = s.replaceAll("[()]", "");
             //System.out.println(s);
 
             String[] words;
+            String[] noParenthesesWords;
             words = s.split(" ");
+            noParenthesesWords = noParentheses.split(" ");
 
-            switch (words[0]) {
+            switch (noParenthesesWords[0]) {
                 case "print":
                     String toPrint = "";
                     ArrayList<String> wordsToPrint = new ArrayList<>();
