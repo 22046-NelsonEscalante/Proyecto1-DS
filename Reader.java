@@ -29,7 +29,6 @@ public class Reader {
             } catch (Exception e) {
                 throw new Exception();
             }
-
     }
 
     /**
@@ -49,7 +48,6 @@ public class Reader {
             }
         }
 
-
         int index;
         //System.out.println(file);
 
@@ -58,9 +56,8 @@ public class Reader {
             String noParentheses = s.replaceAll("[()]", "");
             //System.out.println(s);
 
-            String[] words;
             String[] noParenthesesWords;
-            words = s.split(" ");
+            s.split(" ");
             noParenthesesWords = noParentheses.split(" ");
 
             if (toSkip.contains(index)) {
