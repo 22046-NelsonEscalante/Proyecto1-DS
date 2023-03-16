@@ -39,6 +39,7 @@ public class Reader {
      * @param in Scanner
      */
     public void execute(ArrayList<String> file, Scanner in, HashMap<String, String> parameters) {
+        ArrayList<Integer> toSkip = new ArrayList<>();
 
         if (parameters != null) {
             for (String k : parameters.keySet()) {
@@ -61,6 +62,10 @@ public class Reader {
             String[] noParenthesesWords;
             words = s.split(" ");
             noParenthesesWords = noParentheses.split(" ");
+
+            if (toSkip.contains(index)) {
+                noParenthesesWords[0] = "Skip";
+            }
 
             switch (noParenthesesWords[0]) {
                 case "print":
@@ -104,17 +109,28 @@ public class Reader {
                         params.add(noParenthesesWords[i]);
                     }
 
-                    int tempIndex = index++;
+                    int tempIndex = index + 1;
+                    
                     line = file.get(tempIndex);
 
                     while (!line.equals(")")) {
+                        line = file.get(tempIndex);
                         lines.add(line);
-                        file.remove(tempIndex);
+                        toSkip.add(tempIndex);
                         tempIndex++;
                     }
 
                     mem.addFunction(name, params, lines);
 
+                    break;
+                case "format":
+                    if (noParenthesesWords[1].equals("t")) {
+                        String toPrint2 = "";
+                        ArrayList<String> wordsToPrint2 = new ArrayList<>();
+                        
+                    }
+                    break;
+                case "Skip":
                     break;
                 default:
                     if (mem.getMapFunc().keySet().contains(noParenthesesWords[0])) {
