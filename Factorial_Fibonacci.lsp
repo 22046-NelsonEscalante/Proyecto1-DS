@@ -1,6 +1,5 @@
 (print "Factorial y Serie Fibonacci")
 
-
 (defvar num)
 (defvar opc)
 

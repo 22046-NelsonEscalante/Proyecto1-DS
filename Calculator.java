@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Stack;
 
-
 public class Calculator {
 
     private int op1;

@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 public class Memory {
     private HashMap<String, Integer> vars = new HashMap<>();
     private HashMap<String, Function> functions = new HashMap<>();
