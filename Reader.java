@@ -39,6 +39,7 @@ public class Reader {
      */
     public void execute(ArrayList<String> file, Scanner in, HashMap<String, String> parameters) {
         ArrayList<Integer> toSkip = new ArrayList<>();
+        Calculator calc = new Calculator();
 
         if (parameters != null) {
             for (String k : parameters.keySet()) {
@@ -56,9 +57,11 @@ public class Reader {
             String noParentheses = s.replaceAll("[()]", "");
             //System.out.println(s);
 
+            String[] words;
             String[] noParenthesesWords;
             s.split(" ");
             noParenthesesWords = noParentheses.split(" ");
+            words = s.split(" ");
 
             if (toSkip.contains(index)) {
                 noParenthesesWords[0] = "Skip";
@@ -123,8 +126,20 @@ public class Reader {
                 case "format":
                     if (noParenthesesWords[1].equals("t")) {
                         String toPrint2 = "";
-                        ArrayList<String> wordsToPrint2 = new ArrayList<>();
-                        
+                        String[] noQuotes;
+                        String[] noQuotes2;
+
+                        noQuotes = s.split("\"");
+                        noQuotes2 = noQuotes[1].split(" ");
+                        for (String aWord : noQuotes2) {
+                            if (aWord.equals("(\\~.*)")) {
+                                toPrint2 = toPrint2 + calc.calculate(noQuotes[2]);
+                            } else {
+                                toPrint2 = toPrint2 + aWord;
+                            }
+                        }
+
+                        System.out.println(toPrint2); 
                     }
                     break;
                 case "Skip":
