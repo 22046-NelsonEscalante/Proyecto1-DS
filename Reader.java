@@ -57,11 +57,10 @@ public class Reader {
             String noParentheses = s.replaceAll("[()]", "");
             //System.out.println(s);
 
-            String[] words;
             String[] noParenthesesWords;
             s.split(" ");
             noParenthesesWords = noParentheses.split(" ");
-            words = s.split(" ");
+            s.split(" ");
 
             if (toSkip.contains(index)) {
                 noParenthesesWords[0] = "Skip";

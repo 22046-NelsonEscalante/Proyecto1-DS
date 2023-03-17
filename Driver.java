@@ -11,7 +11,7 @@ public class Driver {
         int i = 0;
 
         Calculator myCalculator = new Calculator();
-        myCalculator.calculate("(-(+35)4)");
+        myCalculator.calculate("( - ( + 35 5 ) 4 )");
 
         // A loop that will run forever until the user types "exit"
         while (true) {
