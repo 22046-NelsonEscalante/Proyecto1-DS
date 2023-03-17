@@ -61,11 +61,17 @@ public class Reader {
     public void execute(ArrayList<String> file, Scanner in, HashMap<String, String> parameters) {
         ArrayList<Integer> toSkip = new ArrayList<>();
         Calculator calc = new Calculator();
+        Memory memo2 = new Memory();
+
 
         if (parameters != null) {
             for (String k : parameters.keySet()) {
+                int preIndx = 0;
                 for (String preReplaceLine : file) {
-                    preReplaceLine.replaceAll(k, parameters.get(k));
+                    String value = parameters.get(k);
+                    String replacedLine = preReplaceLine.replaceAll(k, value);
+                    file.set(preIndx, replacedLine);
+                    preIndx++;
                 }
             }
         }
@@ -77,6 +83,7 @@ public class Reader {
         for (String s: file) {
             index = file.indexOf(s);
             String noParentheses = s.replaceAll("[()]", "");
+            noParentheses = noParentheses.trim();
             //System.out.println(s);
 
             String[] noParenthesesWords;
@@ -152,17 +159,15 @@ public class Reader {
                         String toPrint2 = "";
                         String[] noQuotes;
                         String[] noQuotes2;
-
                         noQuotes = s.split("\"");
                         noQuotes2 = noQuotes[1].split(" ");
                         for (String aWord : noQuotes2) {
-                            if (aWord.equals("(\\~.*)")) {
+                            if (aWord.equals("~D")) {
                                 toPrint2 = toPrint2 + calc.calculate(noQuotes[2]);
                             } else {
-                                toPrint2 = toPrint2 + aWord;
+                                toPrint2 = toPrint2 + aWord + " ";
                             }
                         }
-
                         System.out.println(toPrint2); 
                     }
                     break;
@@ -175,6 +180,21 @@ public class Reader {
 
                 case "Skip":
                     break;
+
+                case "if":
+                    int ifTempIndx = 0;
+                    int ifTempIndx2 = 0;
+                    if (noParenthesesWords[1] == "=") {
+                        if (noParenthesesWords[2] == noParenthesesWords[3]) {
+                            ifTempIndx = index + 1;
+                            toSkip.add(ifTempIndx);
+                            String toReturn = "" + file.get(ifTempIndx);
+                        } else {
+                            ifTempIndx2 = index + 2;
+                            toSkip.add(ifTempIndx2);
+                            
+                        }
+                    }
 
                 default:
                     if (mem.getMapFunc().keySet().contains(noParenthesesWords[0])) {
