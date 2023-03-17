@@ -80,8 +80,9 @@ public class Reader {
             //System.out.println(s);
 
             String[] noParenthesesWords;
-            s.split(" ");
             noParenthesesWords = noParentheses.split(" ");
+            s.split(" ");
+
             if (toSkip.contains(index)) {
                 noParenthesesWords[0] = "Skip";
             }
