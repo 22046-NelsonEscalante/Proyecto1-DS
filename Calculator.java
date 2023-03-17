@@ -3,13 +3,13 @@ import java.util.Stack;
 
 public class Calculator {
 
-    private int op1;
-    private int op2;
+    private float op1;
+    private float op2;
     private String sign;
-    private int res;
+    private float res;
     private Stack<ArrayList<String>> pila = new Stack<>();
 
-    public int calculate(String op) {
+    public float calculate(String op) {
         
         String[] operandos = op.split("");
         
@@ -43,8 +43,8 @@ public class Calculator {
                         ArrayList<String> evaluateArrayList = pila.pop();
 
                         sign = evaluateArrayList.get(0); 
-                        op1 = Integer.parseInt(evaluateArrayList.get(1));
-                        op2 = Integer.parseInt(evaluateArrayList.get(2));
+                        op1 = Float.valueOf(evaluateArrayList.get(1));
+                        op2 = Float.valueOf(evaluateArrayList.get(2));
         
                         if(sign.equals("+")) {
                             res = op1 + op2;

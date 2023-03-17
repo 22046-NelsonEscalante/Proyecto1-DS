@@ -43,8 +43,12 @@ public class Reader {
 
         if (parameters != null) {
             for (String k : parameters.keySet()) {
+                int preIndx = 0;
                 for (String preReplaceLine : file) {
-                    preReplaceLine.replaceAll(k, parameters.get(k));
+                    String value = parameters.get(k);
+                    String replacedLine = preReplaceLine.replaceAll(k, value);
+                    file.set(preIndx, replacedLine);
+                    preIndx++;
                 }
             }
         }
@@ -55,6 +59,7 @@ public class Reader {
         for (String s: file) {
             index = file.indexOf(s);
             String noParentheses = s.replaceAll("[()]", "");
+            noParentheses = noParentheses.trim();
             //System.out.println(s);
 
             String[] words;
@@ -105,6 +110,7 @@ public class Reader {
                     ArrayList<String> params = new ArrayList<>();
                     ArrayList<String> lines = new ArrayList<>();
                     String line = "";
+
                     for (int i = 2; i < noParenthesesWords.length; i++) {
                         params.add(noParenthesesWords[i]);
                     }
@@ -132,10 +138,10 @@ public class Reader {
                         noQuotes = s.split("\"");
                         noQuotes2 = noQuotes[1].split(" ");
                         for (String aWord : noQuotes2) {
-                            if (aWord.equals("(\\~.*)")) {
+                            if (aWord.equals("~D")) {
                                 toPrint2 = toPrint2 + calc.calculate(noQuotes[2]);
                             } else {
-                                toPrint2 = toPrint2 + aWord;
+                                toPrint2 = toPrint2 + aWord + " ";
                             }
                         }
 
