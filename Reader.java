@@ -78,10 +78,12 @@ public class Reader {
                     toPrint = String.join(" ", wordsToPrint);
                     System.out.println(toPrint);
                     break;
+
                 case "defvar":
                     String[] variable = {noParenthesesWords[1], "0"};
                     mem.addMemory(variable);
                     break;
+
                 case "setq":
                     if (noParenthesesWords[2].equals("read")) {
                         boolean f1 = true;
@@ -100,6 +102,7 @@ public class Reader {
                         mem.addMemory(vars);
                     }
                     break;
+
                 case "defun":
                     String name = noParenthesesWords[1];
                     ArrayList<String> params = new ArrayList<>();
@@ -123,6 +126,7 @@ public class Reader {
                     mem.addFunction(name, params, lines);
 
                     break;
+
                 case "format":
                     if (noParenthesesWords[1].equals("t")) {
                         String toPrint2 = "";
@@ -142,8 +146,13 @@ public class Reader {
                         System.out.println(toPrint2); 
                     }
                     break;
+
+                case "atom":
+                    if()
+
                 case "Skip":
                     break;
+
                 default:
                     if (mem.getMapFunc().keySet().contains(noParenthesesWords[0])) {
                         Function funcToDo = mem.getFunc(noParenthesesWords[0]);

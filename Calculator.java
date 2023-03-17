@@ -11,7 +11,7 @@ public class Calculator {
 
     public int calculate(String op) {
         
-        String[] operandos = op.split("");
+        String[] operandos = op.split("\\s+");
         
         ArrayList<String> chapuz = new ArrayList<>();
         pila.push(chapuz);
