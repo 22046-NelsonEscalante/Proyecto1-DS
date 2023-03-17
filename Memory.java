@@ -42,6 +42,12 @@ public class Memory {
         return vars.get(variable);
     }
 
+    /**
+     * It returns a function from the functions map, given a name
+     * 
+     * @param name The name of the function.
+     * @return The function object.
+     */
     public Function getFunc(String name) {
         return functions.get(name);
     }

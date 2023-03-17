@@ -87,6 +87,7 @@ public class Reader {
                 noParenthesesWords[0] = "Skip";
             }
 
+            // Reading the file and executing the code.
             switch (noParenthesesWords[0]) {
                 case "print":
                     String toPrint = "";
@@ -192,7 +193,6 @@ public class Reader {
                     }
                     break;
             }
-
         }
     }
 }

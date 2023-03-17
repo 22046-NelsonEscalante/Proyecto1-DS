@@ -10,8 +10,8 @@ public class Driver {
         String response;
         int i = 0;
 
-        Calculator myCalculator = new Calculator();
-        myCalculator.calculate("( - ( + 35 5 ) 4 )");
+        //Calculator myCalculator = new Calculator();
+        //myCalculator.calculate("( - ( + 35 5 ) 4 )");
 
         // A loop that will run forever until the user types "exit"
         while (true) {

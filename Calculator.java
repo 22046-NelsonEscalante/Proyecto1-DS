@@ -12,6 +12,8 @@ public class Calculator {
 
     public float calculate(String op) {
 
+        // Splitting the string into an array of strings, and then it is adding the strings to an
+        // ArrayList.
         try {
             String[] operandos = op.split("\\s+");
             
@@ -72,11 +74,13 @@ public class Calculator {
                     
             }
             
-        } catch (Exception e) {
+        } // Catching the exception and printing an error message.
+        catch (Exception e) {
             System.out.println("Error: ingresa una expresión válida.");
             chapuzS = true;
         }
         
+        // Printing the result of the operation.
         if(chapuzS == false) {
             System.out.println("El resultado es: " + res);
         }
