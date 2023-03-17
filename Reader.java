@@ -32,6 +32,27 @@ public class Reader {
     }
 
     /**
+     * It returns true if the input is a number or a boolean, and false otherwise
+     * 
+     * @param input The string to be checked
+     */
+    public boolean atom(String input) {
+
+        try {
+            Double.parseDouble(input);
+            return true;
+        } catch (NumberFormatException e) {
+
+        }
+
+        if (input.equalsIgnoreCase("true") || input.equalsIgnoreCase("false")) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * It takes a file and a scanner as parameters, and then it executes the code in the file
      * 
      * @param file ArrayList of strings, each string is a line of code
@@ -43,12 +64,8 @@ public class Reader {
 
         if (parameters != null) {
             for (String k : parameters.keySet()) {
-                int preIndx = 0;
                 for (String preReplaceLine : file) {
-                    String value = parameters.get(k);
-                    String replacedLine = preReplaceLine.replaceAll(k, value);
-                    file.set(preIndx, replacedLine);
-                    preIndx++;
+                    preReplaceLine.replaceAll(k, parameters.get(k));
                 }
             }
         }
@@ -56,17 +73,15 @@ public class Reader {
         int index;
         //System.out.println(file);
 
+        // Reading the file and executing the code.
         for (String s: file) {
             index = file.indexOf(s);
             String noParentheses = s.replaceAll("[()]", "");
-            noParentheses = noParentheses.trim();
             //System.out.println(s);
 
             String[] noParenthesesWords;
             s.split(" ");
             noParenthesesWords = noParentheses.split(" ");
-            s.split(" ");
-
             if (toSkip.contains(index)) {
                 noParenthesesWords[0] = "Skip";
             }
@@ -112,7 +127,6 @@ public class Reader {
                     ArrayList<String> params = new ArrayList<>();
                     ArrayList<String> lines = new ArrayList<>();
                     String line = "";
-
                     for (int i = 2; i < noParenthesesWords.length; i++) {
                         params.add(noParenthesesWords[i]);
                     }
@@ -141,10 +155,10 @@ public class Reader {
                         noQuotes = s.split("\"");
                         noQuotes2 = noQuotes[1].split(" ");
                         for (String aWord : noQuotes2) {
-                            if (aWord.equals("~D")) {
+                            if (aWord.equals("(\\~.*)")) {
                                 toPrint2 = toPrint2 + calc.calculate(noQuotes[2]);
                             } else {
-                                toPrint2 = toPrint2 + aWord + " ";
+                                toPrint2 = toPrint2 + aWord;
                             }
                         }
 
@@ -153,7 +167,10 @@ public class Reader {
                     break;
 
                 case "atom":
-                    if()
+                    atom(noParenthesesWords[1]);
+
+                    break;
+                
 
                 case "Skip":
                     break;
