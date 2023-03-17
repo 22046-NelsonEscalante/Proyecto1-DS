@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,8 +33,39 @@ public class ProjectTest {
     public void testCalculator() {
         Calculator myCalculator = new Calculator();
 
-        double calculate = myCalculator.calculate("( - ( + 35 5 ) 4 )");
+        double calculate = myCalculator.calculate("( + ( / 6 3 ) ( * 2 8 ) )");
         
-        Assert.assertEquals(36.0, calculate, 0.5);
+        Assert.assertEquals(18.0, calculate, 0.5);
+    }
+
+    @Test
+    public void testSetq() {
+        Reader myReader = new Reader();
+        Scanner in = new Scanner(System.in);
+        ArrayList<String> op = new ArrayList<>();
+        op.add("(defvar v)");
+        op.add("(setq v (23))");
+
+        myReader.execute(op, in, null);
+
+        Assert.assertEquals(23, myReader.mem.getVal("v"));
+    }
+
+    @Test
+    public void testDefun() {
+        Reader myReader = new Reader();
+        Scanner in = new Scanner(System.in);
+        ArrayList<String> op = new ArrayList<>();
+        op.add("(defvar F)");
+        op.add("(defun Sum (F)");
+        op.add("(setq F (23))");
+        op.add(")");
+        op.add("(Sum (F))");
+
+        myReader.execute(op, in, null);
+
+        //op2 = myReader.mem.getMapFunc().entrySet();
+
+        Assert.assertTrue(myReader.mem.getMapFunc().keySet().contains("Sum"));
     }
 }
