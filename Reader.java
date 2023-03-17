@@ -168,7 +168,7 @@ public class Reader {
                     break;
 
                 case "atom":
-                    atom(noParenthesesWords[1]);
+                    System.out.println(atom(noParenthesesWords[1])); 
 
                     break;
                 
@@ -195,5 +195,4 @@ public class Reader {
 
         }
     }
-
 }
