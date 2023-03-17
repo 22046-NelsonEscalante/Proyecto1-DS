@@ -6,12 +6,12 @@ public class Driver {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         Reader reader = new Reader();
-        ArrayList<String> fileContent = new ArrayList<>();
+        ArrayList<String> fileContent = new ArrayList<>(); // Utilización de ArrayList de String. Se utilizó debido a su facilidad para agregar elemtos nuevos. 
         String response;
         int i = 0;
 
-        Calculator myCalculator = new Calculator();
-        myCalculator.calculate("( - ( + 35 5 ) 4 )");
+        //Calculator myCalculator = new Calculator();
+        //myCalculator.calculate("( - ( + 35 5 ) 4 )");
 
         // A loop that will run forever until the user types "exit"
         while (true) {

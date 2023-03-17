@@ -14,7 +14,7 @@ public class Reader {
      * @return The file is being returned.
      */
     public ArrayList<String> read(String path) throws Exception {
-        ArrayList<String> file = new ArrayList<>();
+        ArrayList<String> file = new ArrayList<>(); // Utilización de ArrayList de String. Se utilizó con la finalidad de guardar fácilmente los datos de un archivo.
 
             try {
                 BufferedReader reader = new BufferedReader(new FileReader(path));
@@ -59,7 +59,7 @@ public class Reader {
      * @param in Scanner
      */
     public void execute(ArrayList<String> file, Scanner in, HashMap<String, String> parameters) {
-        ArrayList<Integer> toSkip = new ArrayList<>();
+        ArrayList<Integer> toSkip = new ArrayList<>(); // Utilización de ArrayList de Enteros para almacenar de una forma sencilla qué datos se omitirán.
         Calculator calc = new Calculator();
         Memory memo2 = new Memory();
 
@@ -86,7 +86,7 @@ public class Reader {
             noParentheses = noParentheses.trim();
             //System.out.println(s);
 
-            String[] noParenthesesWords;
+            String[] noParenthesesWords; //Utilización de una Lista de String para guardar palabras sin paréntesis. Se utilizó por la facilidad la acceder a sus elementos.
             noParenthesesWords = noParentheses.split(" ");
             s.split(" ");
 
@@ -94,10 +94,11 @@ public class Reader {
                 noParenthesesWords[0] = "Skip";
             }
 
+            // Reading the file and executing the code.
             switch (noParenthesesWords[0]) {
                 case "print":
                     String toPrint = "";
-                    ArrayList<String> wordsToPrint = new ArrayList<>();
+                    ArrayList<String> wordsToPrint = new ArrayList<>(); // Utilización de un ArrayList de String que guarda los datos que serán mostrados. Se utilizó por la facilidad a la hora de agregar elementos.
                     for (int i = 1; i < noParenthesesWords.length; i++) {
                         noParenthesesWords[i] = noParenthesesWords[i].replace("\"", "");
                         wordsToPrint.add(noParenthesesWords[i]);
@@ -107,7 +108,7 @@ public class Reader {
                     break;
 
                 case "defvar":
-                    String[] variable = {noParenthesesWords[1], "0"};
+                    String[] variable = {noParenthesesWords[1], "0"}; // Utilización de Lista de String que almacena el valor de las variables. Se utilizó para acceder fácilmente a los elementos que serán almacenados en los HashMaps.
                     mem.addMemory(variable);
                     break;
 
@@ -117,7 +118,7 @@ public class Reader {
                         while (f1) {
                             String value = in.nextLine();
                             if (value.matches("^[0-9]+$")) {
-                                String[] vars = {noParenthesesWords[1], value};
+                                String[] vars = {noParenthesesWords[1], value}; // Utilización de Lista de String que almacena el valor de las variables. Se utilizó para acceder fácilmente a los elementos que serán almacenados en los HashMaps.
                                 mem.addMemory(vars);
                                 f1 = false;
                             } else {
@@ -125,14 +126,14 @@ public class Reader {
                             }
                         }
                     } else {
-                        String[] vars = {noParenthesesWords[1], noParenthesesWords[2]};
+                        String[] vars = {noParenthesesWords[1], noParenthesesWords[2]}; // Utilización de Lista de String que almacena el valor de las variables. Se utilizó para acceder fácilmente a los elementos que serán almacenados en los HashMaps.
                         mem.addMemory(vars);
                     }
                     break;
 
                 case "defun":
                     String name = noParenthesesWords[1];
-                    ArrayList<String> params = new ArrayList<>();
+                    ArrayList<String> params = new ArrayList<>(); // Utilización de ArrayLists de String para añadir los nombres y valoresa de las funciones a los Hashmaps.
                     ArrayList<String> lines = new ArrayList<>();
                     String line = "";
                     for (int i = 2; i < noParenthesesWords.length; i++) {
@@ -157,7 +158,7 @@ public class Reader {
                 case "format":
                     if (noParenthesesWords[1].equals("t")) {
                         String toPrint2 = "";
-                        String[] noQuotes;
+                        String[] noQuotes; // Utilización de listas de String para almacenar los textos que se mostrarán al usuario. Se utilizaron por la facilidad de acceder a sus elementos por índices.
                         String[] noQuotes2;
                         noQuotes = s.split("\"");
                         noQuotes2 = noQuotes[1].split(" ");
@@ -212,7 +213,6 @@ public class Reader {
                     }
                     break;
             }
-
         }
     }
 }
