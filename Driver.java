@@ -8,14 +8,22 @@ public class Driver {
         Reader reader = new Reader();
         ArrayList<String> fileContent = new ArrayList<>();
         String response;
+        int i = 0;
 
         Calculator myCalculator = new Calculator();
         myCalculator.calculate("( - ( + 35 5 ) 4 )");
 
         // A loop that will run forever until the user types "exit"
         while (true) {
-
-            response = in.nextLine();
+            if(i > 0){
+                System.out.println("'execute' para ejecutar el programa, 'exit' para salir");
+                response = in.nextLine();
+            }
+            else {
+                System.out.println("Nombre del archivo .lsp: ");
+                response = in.nextLine();
+            }
+            i++;
             
             if (response.equals("exit")) {
                 in.close();
@@ -27,6 +35,7 @@ public class Driver {
                     fileContent = reader.read(response);
                 } catch (Exception e) {
                     System.out.println("Archivo no encontrado.");
+                    i--;
                 }
             }
 
