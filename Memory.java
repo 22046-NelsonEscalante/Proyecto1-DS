@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Memory {
-    private HashMap<String, Integer> vars = new HashMap<>();
-    private HashMap<String, Function> functions = new HashMap<>();
+    private HashMap<String, Integer> vars = new HashMap<>(); // Utilización de un Hashmaps para almacenar variables y nombres de funciones. 
+    private HashMap<String, Function> functions = new HashMap<>(); // Se utilizaron debido a la comodidad de guardar dos cosas relacionadas en una misma estructura.
     
     /**
      * This function returns a HashMap of the variables in the current scope
