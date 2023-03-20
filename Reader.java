@@ -52,6 +52,22 @@ public class Reader {
         return false;
     }
 
+    public void quote(String[] words) {
+        String topPrint = "";
+        for (int i =  1; i < words.length; i++) {
+            topPrint = words[i] + " ";
+        }
+        System.out.println(topPrint);
+    }
+
+    public boolean equal(String[] words) {
+        boolean flag = false;
+        if (words[1].equals(words[2])) {
+            flag = true;
+        }
+        return flag;
+    }
+
     /**
      * It takes a file and a scanner as parameters, and then it executes the code in the file
      * 
@@ -180,6 +196,18 @@ public class Reader {
                 
 
                 case "Skip":
+                    break;
+
+                case "quote":
+                    quote(noParenthesesWords);
+                    break;
+
+                case "'":
+                    quote(noParenthesesWords);
+                    break;
+
+                case "equal":
+                    equal(noParenthesesWords);
                     break;
 
                 case "if":
