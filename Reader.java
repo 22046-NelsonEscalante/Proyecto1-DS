@@ -112,6 +112,8 @@ public class Reader {
 
             // Reading the file and executing the code.
             switch (noParenthesesWords[0]) {
+
+                // Printing the text that is inside the parentheses.
                 case "print":
                     String toPrint = "";
                     ArrayList<String> wordsToPrint = new ArrayList<>(); // Utilización de un ArrayList de String que guarda los datos que serán mostrados. Se utilizó por la facilidad a la hora de agregar elementos.
@@ -123,6 +125,7 @@ public class Reader {
                     System.out.println(toPrint);
                     break;
 
+                // Creating a variable.
                 case "defvar":
                     String[] variable = {noParenthesesWords[1], "0"}; // Utilización de Lista de String que almacena el valor de las variables. Se utilizó para acceder fácilmente a los elementos que serán almacenados en los HashMaps.
                     mem.addMemory(variable);
@@ -147,6 +150,7 @@ public class Reader {
                     }
                     break;
 
+                // Creating a function.
                 case "defun":
                     String name = noParenthesesWords[1];
                     ArrayList<String> params = new ArrayList<>(); // Utilización de ArrayLists de String para añadir los nombres y valoresa de las funciones a los Hashmaps.
@@ -171,6 +175,7 @@ public class Reader {
 
                     break;
 
+                // Printing the text that is inside the parentheses.
                 case "format":
                     if (noParenthesesWords[1].equals("t")) {
                         String toPrint2 = "";
@@ -189,27 +194,37 @@ public class Reader {
                     }
                     break;
 
+                // Checking if the input is a number or a boolean.
                 case "atom":
                     System.out.println(atom(noParenthesesWords[1])); 
 
                     break;
                 
 
+                // Skipping the line of code.
                 case "Skip":
                     break;
 
+                // Printing the text that is inside the parentheses.
                 case "quote":
                     quote(noParenthesesWords);
                     break;
 
+                // A shortcut for the quote function.
                 case "'":
                     quote(noParenthesesWords);
                     break;
 
+                // Checking if the two values are equal.
                 case "equal":
                     equal(noParenthesesWords);
                     break;
 
+                // A switch statement that is checking for the keyword "if" and then it is checking if
+                // the second word is "=" and then it is checking if the third word is equal to the
+                // fourth word. If it is, then it is adding the index of the next line to the toSkip
+                // arraylist. If it is not, then it is adding the index of the line after the next line
+                // to the toSkip arraylist.
                 case "if":
                     int ifTempIndx = 0;
                     int ifTempIndx2 = 0;

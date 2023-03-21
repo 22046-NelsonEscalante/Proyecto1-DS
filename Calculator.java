@@ -10,6 +10,13 @@ public class Calculator {
     private Stack<ArrayList<String>> pila = new Stack<>(); // Utilización de un Stack. Se empleó un stack porque nos permite agregar y remover objetos de una forma sencilla al tener un funcionamiento de FIFO.
     private boolean chapuzS = false;
 
+    /**
+     * It takes a string as an argument, splits it into an array of strings, and then it is adding the
+     * strings to an ArrayList
+     * 
+     * @param op String that contains the operation to be evaluated.
+     * @return The result of the operation.
+     */
     public float calculate(String op) {
 
         // Splitting the string into an array of strings, and then it is adding the strings to an
